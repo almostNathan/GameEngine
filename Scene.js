@@ -4,7 +4,8 @@ class Scene{
         this.position = null
         this.sprites = []
         this.framerate = fr
-        this.keyState = []
+        this.currentKey = null
+        this.keysDown = new Array(256) 
         this.mouseButton = null
 
         this.canvas = document.createElement("canvas")
@@ -13,6 +14,22 @@ class Scene{
     }
 
     start(){
+        //TODO
+        document.onkeydown = this.updateKeys
+        //TODO
+        document.onkeyup = this.clearKeys
+
+        document.onmousemove = this.updateMousePos
+        document.mouseClicked = false
+        document.onmousedown = function(){
+            this.mouseDown = true
+            this.mouseClicked = true
+        }
+        document.onmouseup = function(){
+            this.mouseDown = false
+            this.mouseClicked = false
+        }
+
 
     }
     end(){
@@ -30,7 +47,16 @@ class Scene{
     showCursor(){
 
     }
+    //reutrn current mouse pos {x: xPos, y: yPos}
+    updateMousePos(e){
+        this.mouseX = e.pageX
+        this.mouseY = e.pageY
+    }
 
-    getMousePos(){
+    //sets all key values to false
+    initKeys(){
+        for (i=0; i<256; i++){
+            keysDown[i] = false
+        }
     }
 }
