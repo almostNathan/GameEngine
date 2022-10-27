@@ -4,8 +4,10 @@ class Sprite{
         this.width = width
         this.xPos = xPos
         this.yPos = yPos
-        this.compSpeed = {dx:0, dy:0}
         this.speed = 0
+        this.compSpeed = {dx:0, dy:0}
+        this.acceleration = 0
+        this.compAccel = {ddx:0, ddy:0}
         this.moveAngle = 0
         this.image = image
         this.imageAngle = null
@@ -14,14 +16,31 @@ class Sprite{
         this.visible = true
     }
     //TODO
-    collidesWith(/*sprite*/){
+    draw(){
+        this.scene.context = context
+        context.save()
+        context.translate(this.xPos, this.yPos)
+        context.rotate(this.imageAngle)
+        context.drawImage(this.image, width, height)
+
+    }
+    update(){
+
+    }
+    vectProject(){
+
+    }
+    addForce(){
+
+    }
+    //idea - change how player/enemy bullets work
+    setBoundAction(){}
+
+    collidesWith(otherObject){
 
     }
     checkBounds(){
         
-    }
-    addForce(){
-
     }
     distanceTo(/*sprite*/){
         
@@ -29,8 +48,6 @@ class Sprite{
     angleTo(/*sprite*/){
 
     }
-
-
     hide(){
         this.visible = false
     }
@@ -40,81 +57,78 @@ class Sprite{
 
 /******GETTERS/SETTERS*******/
     //HEIGHT set/get
-    set height(height){
+    set setHeight(height){
         this.height = height
     }
-    get height(){
+    get getHeight(){
         return this.height
     }
 
     //WIDTH set/get
-    set width(width){
+    set setWidth(width){
         this.width = width
     }
-    get width(){
+    get getWidth(){
         return this.width
     }
 
 
     //POSITION set/get
-    set xPos(x){
+    set setXPos(x){
         this.xPos = x
     }
-    set yPos(y){
+    set setYPos(y){
         this.yPos = y
     }
 
-    get pos(){
+    get getPos(){
         return {x: this.xPos, y: this.yPos}
     }
-    get xPos(){
+    get getXPos(){
         return this.xPos
     }
-    get yPos(){
+    get getYPos(){
         return this.xPos
     }
 
     //SPEED set/get
-    set speed(spd){
+    set setSpeed(spd){
         this.speed = spd
     }
-    get speed(){
+    get getSpeed(){
         return this.speed
     }
 
     //IMAGE get/set
-    set image(img){
+    set setImage(img){
         this.image  = img
     }
-    get image(){
+    get getImage(){
         return this.image
     }
     //IMAGEANGLE get/set
-    set imageAngle(angle){
+    set setImageAngle(angle){
         this.imageAngle = angle
     }
-    get imageAngle(){
+    get getImageAngle(){
         return this.imageAngle
     }
 
     //MOVEANGLE get/set
-    set moveAngle(angle){
+    set setMoveAngle(angle){
         this.moveAngle = angle
     }
-    get moveAngle(){
+    get getMoveAngle(){
         return this.moveAngle
     }
 
     //BOUNDACTION get/set
-    set boundAction(action){
+    set setBoundAction(action){
         this.boundAction = action
     }
 
-    //VISIBLE get/set
-    set visible(isVisible){
-        this.isVisible
-    }
-    get visible(){
+    //VISIBLE get
+    get getVisible(){
         return this.visible
     }
 
